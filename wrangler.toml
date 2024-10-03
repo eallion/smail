@@ -9,11 +9,17 @@ enabled = true
 
 [[kv_namespaces]]
 binding = "KV"
-id = "07f8fe12acba46bbba773dbf6b68aa81"
+id = "5d8c90f565344d538b4f9e151496c60e"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "smail"
-database_id = "f591d1c7-0060-4d35-a146-099ec27b49b1"
-preview_database_id = "f591d1c7-0060-4d35-a146-099ec27b49b1"
+database_id = "8c307e67-6ee6-40b2-a8c0-ee7cf063d2f7"
+preview_database_id = "8c307e67-6ee6-40b2-a8c0-ee7cf063d2f7"
 migrations_dir = "app/drizzle"
+
+[vars]
+COOKIE_SECRET = "COOKIE_SECRET"
+DOMAIN = "r3y.email"
+# PASSWORD = "password"
+TURNSTILE_SITE_KEY="0x4AAAAAAAwiAp94ONfEqU0I"

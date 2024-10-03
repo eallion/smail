@@ -102,7 +102,18 @@ export async function action({ request, context }: ActionFunctionArgs) {
 	const { getSession, commitSession } = sessionWrapper(context.cloudflare.env);
 	const session = await getSession(request.headers.get("Cookie"));
 	const { pathname } = new URL(request.url);
-	const name = `${randomName("", ".")}.${customAlphabet("0123456789", 4)()}`;
+	let name;
+	const excludedNames = new Set(["git", "r3y"]);
+	const generateName = () => {
+		const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+		const generate = customAlphabet(alphabet, 3);
+		let newName;
+		do {
+			newName = generate();
+		} while (excludedNames.has(newName));
+		return newName;
+	};
+	name = generateName();
 	const email = `${name}@${context.cloudflare.env.DOMAIN || "smail.pw"}`;
 	switch (request.method) {
 		case "POST": {
